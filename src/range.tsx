@@ -167,58 +167,74 @@ export const RangeDatepicker: React.FC<RangeDatepickerProps> = ({
   const PopoverContentWrapper = usePortal ? Portal : React.Fragment;
 
   return (
-    <Popover
-      placement="bottom-start"
-      variant="responsive"
-      isOpen={isOpen}
-      onOpen={onOpen}
-      onClose={onPopoverClose}
-      isLazy
-    >
-      <PopoverTrigger>
-        <Input
-          onKeyPress={(e) => {
-            if (e.key === ' ' && !isOpen) {
-              e.preventDefault();
-              onOpen();
-            }
-          }}
-          id={id}
-          autoComplete="off"
-          isDisabled={disabled}
-          name={name}
-          value={intVal}
-          onChange={(e) => e.target.value}
-          {...propsConfigs.inputProps}
-        />
-      </PopoverTrigger>
-      <PopoverContentWrapper>
-        <PopoverContent
-          width="100%"
-          {...propsConfigs?.popoverCompProps?.popoverContentProps}
-        >
-          <PopoverBody {...propsConfigs.popoverCompProps?.popoverBodyProps}>
-            <FocusLock>
-              <RangeCalendarPanel
-                dayzedHookProps={{
-                  onDateSelected: handleOnDateSelected,
-                  selected: selectedDates,
-                  monthsToDisplay: 2,
-                  date: dateInView,
-                  minDate: minDate,
-                  maxDate: maxDate,
-                  offset: offset,
-                  onOffsetChanged: setOffset,
-                  firstDayOfWeek: calendarConfigs.firstDayOfWeek,
-                }}
-                configs={calendarConfigs}
-                propsConfigs={propsConfigs}
-                selected={selectedDates}
-              />
-            </FocusLock>
-          </PopoverBody>
-        </PopoverContent>
-      </PopoverContentWrapper>
-    </Popover>
+    // <Popover
+    //   placement="bottom-start"
+    //   variant="responsive"
+    //   isOpen={isOpen}
+    //   onOpen={onOpen}
+    //   onClose={onPopoverClose}
+    //   isLazy
+    // >
+    //   <PopoverTrigger>
+    //     <Input
+    //       onKeyPress={(e) => {
+    //         if (e.key === ' ' && !isOpen) {
+    //           e.preventDefault();
+    //           onOpen();
+    //         }
+    //       }}
+    //       id={id}
+    //       autoComplete="off"
+    //       isDisabled={disabled}
+    //       name={name}
+    //       value={intVal}
+    //       onChange={(e) => e.target.value}
+    //       {...propsConfigs.inputProps}
+    //     />
+    //   </PopoverTrigger>
+    //   <PopoverContentWrapper>
+    //     <PopoverContent
+    //       width="100%"
+    //       {...propsConfigs?.popoverCompProps?.popoverContentProps}
+    //     >
+    //       <PopoverBody {...propsConfigs.popoverCompProps?.popoverBodyProps}>
+    //         <FocusLock>
+    //           <RangeCalendarPanel
+    //             dayzedHookProps={{
+    //               onDateSelected: handleOnDateSelected,
+    //               selected: selectedDates,
+    //               monthsToDisplay: 2,
+    //               date: dateInView,
+    //               minDate: minDate,
+    //               maxDate: maxDate,
+    //               offset: offset,
+    //               onOffsetChanged: setOffset,
+    //               firstDayOfWeek: calendarConfigs.firstDayOfWeek,
+    //             }}
+    //             configs={calendarConfigs}
+    //             propsConfigs={propsConfigs}
+    //             selected={selectedDates}
+    //           />
+    //         </FocusLock>
+    //       </PopoverBody>
+    //     </PopoverContent>
+    //   </PopoverContentWrapper>
+    // </Popover>
+    <RangeCalendarPanel
+      dayzedHookProps={{
+        onDateSelected: handleOnDateSelected,
+        selected: selectedDates,
+        monthsToDisplay: 2,
+        date: dateInView,
+        minDate: minDate,
+        maxDate: maxDate,
+        offset: offset,
+        onOffsetChanged: setOffset,
+        firstDayOfWeek: calendarConfigs.firstDayOfWeek,
+      }}
+      configs={calendarConfigs}
+      propsConfigs={propsConfigs}
+      selected={selectedDates}
+    />
   );
 };
